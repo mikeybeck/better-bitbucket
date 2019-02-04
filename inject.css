@@ -1,0 +1,55 @@
+/* CSS to help improve your Bitbucket PR experience */
+
+#pull-request-header {
+    position: sticky;
+    z-index: 15;
+    background: #ddd;
+    top: 0;
+    padding: 5px;
+}
+.heading {
+    position: sticky;
+    top: 40px;
+    z-index: 9;
+}
+li.detail-summary--item {
+    position: fixed;
+    top: 10px;
+    z-index: 15;
+    right: 450px;
+}
+#watch-pullrequest {
+    position: absolute;
+    margin-top: 40px;
+}
+#commit-files-summary {
+    position: fixed;
+    right: 20px;
+    margin-left: auto;
+    z-index: 11;
+    top:35px;
+    background: #ddd;
+    width: calc(30% - 35px);
+    height: 100%;
+}
+.commit-files-summary .count-badge {
+    float: left;
+    background: transparent;
+}
+.diff-container {
+    max-width: 70%;
+}
+/* .udiff-line.deletion pre.source::first-letter {
+    visibility: hidden;
+}
+.udiff-line.addition pre.source::first-letter {
+    visibility: hidden;
+} */
+
+/* adblocking */
+body > #floatLayer1 div {
+    display: none !important;
+}
+center div#floatLayer2 {
+    display: none !important;
+}
