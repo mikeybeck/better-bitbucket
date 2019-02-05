@@ -36,7 +36,7 @@ li.detail-summary--item {
     float: left;
     background: transparent;
 }
-.diff-container {
+#pullrequest-navigation {
     max-width: 70%;
 }
 /* .udiff-line.deletion pre.source::first-letter {
