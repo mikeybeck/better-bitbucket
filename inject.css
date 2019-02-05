@@ -12,15 +12,14 @@
     top: 40px;
     z-index: 9;
 }
-li.detail-summary--item {
+li.detail-summary--item, #watch-pullrequest {
     position: fixed;
     top: 10px;
     z-index: 15;
     right: 450px;
 }
 #watch-pullrequest {
-    position: absolute;
-    margin-top: 40px;
+    right: 650px;
 }
 #commit-files-summary {
     position: fixed;
