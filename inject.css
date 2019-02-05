@@ -23,6 +23,7 @@ li.detail-summary--item, #watch-pullrequest {
 }
 #commit-files-summary-sidebar {
     position: fixed;
+    overflow-y: auto;
     right: 20px;
     margin-left: auto;
     z-index: 11;
