@@ -21,7 +21,7 @@ li.detail-summary--item, #watch-pullrequest {
 #watch-pullrequest {
     right: 650px;
 }
-#commit-files-summary {
+#commit-files-summary-sidebar {
     position: fixed;
     right: 20px;
     margin-left: auto;

@@ -3,19 +3,26 @@
 (function () {
     console.log('inserted better-bitbucket JS');
 
-    removePlusMinus();
+    try {
+        removePlusMinus();
+        makeSidebar();
+    } catch (err) {
+        console.error(err);
+    }
 
     function removePlusMinus() {
-        try {
-            var list = document.getElementsByClassName("source");
-            for (let item of list) {
-                if (item.innerHTML.charAt(0) === '+' || item.innerHTML.charAt(0) === '-') {
-                    item.innerHTML = ' ' + item.innerHTML.substr(1);
-                }
+        var list = document.getElementsByClassName('source');
+        for (let item of list) {
+            if (item.innerHTML.charAt(0) === '+' || item.innerHTML.charAt(0) === '-') {
+                item.innerHTML = ' ' + item.innerHTML.substr(1);
             }
-        } catch (err) {
-            console.error(err);
         }
     }
 
+    function makeSidebar() {
+        var div = document.getElementById('commit-files-summary'),
+            clone = div.cloneNode(true);
+        clone.id = 'commit-files-summary-sidebar';
+        document.body.appendChild(clone);
+    }
 })();
