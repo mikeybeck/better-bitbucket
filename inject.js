@@ -15,9 +15,12 @@ window.onload = function () {
         var checkExist = setInterval(function () {
             if (document.getElementById('commit-files-summary')) {
 
-                removePlusMinus();
                 makeSidebar();
                 highlightFileNames();
+                // Those pesky +'s & -'s reappear if you remove them too early, so wait a few seconds.
+                setTimeout(function () {
+                    removePlusMinus();
+                }, 5000);
 
                 clearInterval(checkExist);
             }
