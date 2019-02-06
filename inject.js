@@ -1,13 +1,27 @@
-// this is the code which will be injected into a given page...
+// better-bitbucket JS
 
-(function () {
+window.onload = function () {
     console.log('inserted better-bitbucket JS');
 
     try {
-        removePlusMinus();
-        makeSidebar();
+        runFunctions();
     } catch (err) {
         console.error(err);
+    }
+
+    // It's difficult to tell when the page is ready to be manipulated; periodically checking that the
+    // #commit-files-summary element exists seems to do the trick well enough at the moment.
+    function runFunctions() {
+        var checkExist = setInterval(function () {
+            if (document.getElementById('commit-files-summary')) {
+
+                removePlusMinus();
+                makeSidebar();
+                highlightFileNames();
+
+                clearInterval(checkExist);
+            }
+        }, 100); // check every 100ms
     }
 
     function removePlusMinus() {
@@ -27,65 +41,56 @@
     }
 
 
+    //  Note: most of the code in the below function was taken directly from
+    //  Stack Overflow: https://stackoverflow.com/a/7557433/1409469
+    function highlightFileNames() {
 
+        let elements = Array.prototype.slice.call(document.getElementsByClassName('diff-actions'));
 
+        elements.forEach(el => {
+            let handler = onVisibilityChange(el, function (visible) {
+                let sidebarFiles = document.getElementById('commit-files-summary-sidebar').children,
+                    fileIndex = elements.indexOf(el);
+                if (visible) {
+                    sidebarFiles[fileIndex].style.backgroundColor = 'yellow';
+                } else {
+                    sidebarFiles[fileIndex].style.backgroundColor = 'inherit';
+                }
+            });
 
-    // TESTING BELOW HERE:
+            if (window.addEventListener) {
+                addEventListener('load', handler, false);
+                addEventListener('scroll', handler, false);
+                addEventListener('resize', handler, false);
+            } else if (window.attachEvent) {
+                attachEvent('onload', handler);
+                attachEvent('onscroll', handler);
+                attachEvent('onresize', handler);
+            }
+        });
 
-    function isElementInViewport(el) {
-        var rect = el.getBoundingClientRect();
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
 
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
-        );
-    }
-
-    function onVisibilityChange(el, callback) {
-        var old_visible;
-        return function () {
-            var visible = isElementInViewport(el);
-            if (visible != old_visible) {
-                old_visible = visible;
-                if (typeof callback == 'function') {
-                    callback(visible);
+        function onVisibilityChange(el, callback) {
+            var old_visible;
+            return function () {
+                var visible = isElementInViewport(el);
+                if (visible != old_visible) {
+                    old_visible = visible;
+                    if (typeof callback == 'function') {
+                        callback(visible);
+                    }
                 }
             }
         }
     }
 
-
-    let els = document.getElementsByClassName('diff-actions');
-    els = Array.prototype.slice.call(els);
-
-    els.forEach(el => {
-        var handler = onVisibilityChange(el, function (visible) {
-            console.log('visiblilty changed!');
-            console.log(visible);
-            console.log(el.id);
-            console.log(els.indexOf(el));
-
-            let c = document.getElementById('commit-files-summary-sidebar').children;
-            if (visible) {
-                c[els.indexOf(el)].style.backgroundColor = 'yellow';
-            } else {
-                c[els.indexOf(el)].style.backgroundColor = 'inherit';
-            }
-        });
-
-        if (window.addEventListener) {
-            addEventListener('DOMContentLoaded', handler, false);
-            addEventListener('load', handler, false);
-            addEventListener('scroll', handler, false);
-            addEventListener('resize', handler, false);
-        } else if (window.attachEvent) {
-            attachEvent('onDOMContentLoaded', handler); // IE9+ :(
-            attachEvent('onload', handler);
-            attachEvent('onscroll', handler);
-            attachEvent('onresize', handler);
-        }
-    });
-
-})();
+}();

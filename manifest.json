@@ -1,23 +1,19 @@
-
-
 {
-  "name": "Better Bitbucket",
-  "version": "0.0.1",
-  "manifest_version": 2,
-  "description": "Make your Bitbucket pull request experience more enjoyable",
-  "homepage_url": "https://mikeybeck.com",
-  "background": {
-    "scripts": [
-      "background.js"
-    ],
-    "persistent": true
-  },
-  "browser_action": {
-    "default_title": "Betterify my Bitbucket!"
-  },
-  "permissions": [
-    "https://*/*",
-    "http://*/*",
-    "tabs"
-  ]
+    "name": "Better Bitbucket",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "Make your Bitbucket pull request experience more enjoyable",
+    "homepage_url": "https://mikeybeck.com",
+    "content_scripts": [{
+        "matches": ["*://bitbucket.org/*"],
+        "css": ["inject.css"],
+        "js": ["inject.js"]
+    }],
+    "browser_action": {
+        "default_title": "Betterify my Bitbucket!"
+    },
+    "permissions": [
+        "*://bitbucket.org/*",
+        "tabs"
+    ]
 }
