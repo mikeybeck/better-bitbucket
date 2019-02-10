@@ -12,7 +12,7 @@
     top: 40px;
     z-index: 9;
 }
-li.detail-summary--item, #watch-pullrequest {
+.detail-summary--item, #watch-pullrequest {
     position: fixed;
     top: 10px;
     z-index: 15;
@@ -32,7 +32,7 @@ li.detail-summary--item, #watch-pullrequest {
     width: calc(30% - 35px);
     height: 100%;
 }
-.commit-files-summary .count-badge {
+#commit-files-summary-sidebar .count-badge {
     float: left;
     background: transparent;
 }
