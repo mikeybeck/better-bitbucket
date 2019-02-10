@@ -1,18 +1,26 @@
 /* better-bitbucket CSS */
 
 #pull-request-header {
-    position: sticky;
+    position: fixed;
+    width: calc(100% - 115px);
     z-index: 15;
-    background: #ddd;
+    background: #DFE1E6;
     top: 0;
     padding: 5px;
+    border-bottom: 5px solid #fff;
 }
-.heading {
+header.app-header {
+    margin-top: 40px;
+}
+.aui-page-panel {
+    max-width: 70%;
+}
+#changeset-diff .heading {
     position: sticky;
-    top: 40px;
+    top: 47px;
     z-index: 9;
 }
-.detail-summary--item, #watch-pullrequest {
+li.detail-summary--item, #watch-pullrequest {
     position: fixed;
     top: 10px;
     z-index: 15;
@@ -23,28 +31,33 @@
 }
 #commit-files-summary-sidebar {
     position: fixed;
-    overflow-y: auto;
+    overflow: auto;
     right: 20px;
     margin-left: auto;
     z-index: 11;
-    top:35px;
-    background: #ddd;
-    width: calc(30% - 35px);
+    top: 35px;
+    background: #DFE1E6;
+    width: calc(30% - 70px);
     height: 100%;
 }
 #commit-files-summary-sidebar .count-badge {
     float: left;
     background: transparent;
 }
-#pullrequest-navigation {
-    max-width: 70%;
+#commit-files-summary-sidebar .commit-file-diff-stats, #commit-files-summary-sidebar .diff-summary-lozenge {
+    display: none;
 }
-/* .udiff-line.deletion pre.source::first-letter {
-    visibility: hidden;
+#commit-files-summary-sidebar li {
+    padding-left: 0;
 }
-.udiff-line.addition pre.source::first-letter {
-    visibility: hidden;
-} */
+#commit-files-summary-sidebar {
+    padding-left: 35px;
+}
+#commit-files-summary-sidebar .count-badge {
+    margin-right: -40px;
+    margin-left: -30px;
+}
+
 
 /* adblocking */
 body > #floatLayer1 div {
