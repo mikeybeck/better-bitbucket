@@ -55,9 +55,9 @@ window.onload = function () {
                 let sidebarFiles = document.getElementById('commit-files-summary-sidebar').children,
                     fileIndex = elements.indexOf(el);
                 if (visible) {
-                    sidebarFiles[fileIndex].style.backgroundColor = 'yellow';
+                    sidebarFiles[fileIndex].classList.add('file-in-view');
                 } else {
-                    sidebarFiles[fileIndex].style.backgroundColor = 'inherit';
+                    sidebarFiles[fileIndex].classList.remove('file-in-view');
                 }
             });
 

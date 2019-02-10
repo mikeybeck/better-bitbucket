@@ -57,12 +57,6 @@ li.detail-summary--item, #watch-pullrequest {
     margin-right: -40px;
     margin-left: -30px;
 }
-
-
-/* adblocking */
-body > #floatLayer1 div {
-    display: none !important;
-}
-center div#floatLayer2 {
-    display: none !important;
+#commit-files-summary-sidebar .file-in-view {
+    background-color: #fefefe;
 }
