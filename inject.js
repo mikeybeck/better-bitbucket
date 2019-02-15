@@ -17,6 +17,8 @@ window.onload = function () {
 
                 makeSidebar();
                 highlightFileNames();
+                addCommentCheckboxes();
+
                 // Those pesky +'s & -'s reappear if you remove them too early, so wait a few seconds.
                 setTimeout(function () {
                     removePlusMinus();
@@ -37,10 +39,19 @@ window.onload = function () {
     }
 
     function makeSidebar() {
-        var div = document.getElementById('commit-files-summary'),
+        let div = document.getElementById('commit-files-summary'),
             clone = div.cloneNode(true);
         clone.id = 'commit-files-summary-sidebar';
         document.body.appendChild(clone);
+    }
+
+    function addCommentCheckboxes() {
+        let elements = Array.prototype.slice.call(document.getElementsByClassName('refract-content-container'));
+        elements.forEach(el => {
+            el.insertAdjacentHTML('afterbegin',
+            '<input type="checkbox" class="commentChecker toggle-check-input" />' +
+            '<!--<label class="toggle-check"><span class="toggle-check-text"></span></label>-->');
+        });
     }
 
 

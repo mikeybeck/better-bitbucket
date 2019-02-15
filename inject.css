@@ -9,26 +9,33 @@
     padding: 5px;
     border-bottom: 5px solid #fff;
 }
+
 header.app-header {
     margin-top: 40px;
 }
+
 .aui-page-panel {
     max-width: 70%;
 }
+
 #changeset-diff .heading {
     position: sticky;
     top: 47px;
     z-index: 9;
 }
-li.detail-summary--item, #watch-pullrequest {
+
+li.detail-summary--item,
+#watch-pullrequest {
     position: fixed;
     top: 10px;
     z-index: 15;
     right: 450px;
 }
+
 #watch-pullrequest {
     right: 650px;
 }
+
 #commit-files-summary-sidebar {
     position: fixed;
     overflow: auto;
@@ -40,23 +47,81 @@ li.detail-summary--item, #watch-pullrequest {
     width: calc(30% - 70px);
     height: 100%;
 }
+
 #commit-files-summary-sidebar .count-badge {
     float: left;
     background: transparent;
 }
-#commit-files-summary-sidebar .commit-file-diff-stats, #commit-files-summary-sidebar .diff-summary-lozenge {
+
+#commit-files-summary-sidebar .commit-file-diff-stats,
+#commit-files-summary-sidebar .diff-summary-lozenge {
     display: none;
 }
+
 #commit-files-summary-sidebar li {
     padding-left: 0;
 }
+
 #commit-files-summary-sidebar {
     padding-left: 35px;
 }
+
 #commit-files-summary-sidebar .count-badge {
     margin-right: -40px;
     margin-left: -30px;
 }
+
 #commit-files-summary-sidebar .file-in-view {
     background-color: #fefefe;
 }
+
+/* Comment checkbox markup */
+.commentChecker.toggle-check-input:after {
+    content: 'Hide comments';
+    left: 20px;
+    position: relative;
+    visibility: visible !important;
+    background: #FF4136;
+    display: inline-block;
+    border-radius: 1em;
+    cursor: pointer;
+    padding: 7px 5px;
+    width: 90px;
+    text-align: center;
+}
+.commentChecker.toggle-check-input:checked:after {
+    content: 'Show comments';
+    background: #8ad869;
+}
+.commentChecker.toggle-check-input~.comment-thread-container {
+    display: block;
+}
+.commentChecker.toggle-check-input:checked~.comment-thread-container {
+    display: none;
+}
+.commentChecker {
+    position: sticky;
+    display: block;
+    top: 65px;
+    z-index: 9;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 15px;
+    left: auto;
+    right: auto;
+    margin-left: auto;
+    margin-right: auto;
+    visibility: hidden;
+    color: white;
+    text-shadow: 0px 0px 1px #121;
+}
+
+.refract-container {
+    overflow: visible !important;
+    overflow-x: visible !important;
+}
+.refract-content-container {
+    top: -38px;
+    position: relative;
+}
+/* End comment checkbox markup */
