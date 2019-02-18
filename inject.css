@@ -122,6 +122,7 @@ li.detail-summary--item,
 }
 .refract-content-container {
     top: -38px;
+    margin-bottom: -38px;
     position: relative;
 }
 /* End comment checkbox markup */
