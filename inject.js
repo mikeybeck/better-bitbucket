@@ -19,6 +19,8 @@ window.onload = function () {
                 highlightFileNames();
                 addCommentCheckboxes();
 
+                showCompareContentButton();
+
                 // Those pesky +'s & -'s reappear if you remove them too early, so wait a few seconds.
                 setTimeout(function () {
                     removePlusMinus();
@@ -49,8 +51,8 @@ window.onload = function () {
         let elements = Array.prototype.slice.call(document.getElementsByClassName('refract-content-container'));
         elements.forEach(el => {
             el.insertAdjacentHTML('afterbegin',
-            '<input type="checkbox" class="commentChecker toggle-check-input" />' +
-            '<!--<label class="toggle-check"><span class="toggle-check-text"></span></label>-->');
+                '<input type="checkbox" class="commentChecker toggle-check-input" />' +
+                '<!--<label class="toggle-check"><span class="toggle-check-text"></span></label>-->');
         });
     }
 
@@ -104,6 +106,31 @@ window.onload = function () {
                     }
                 }
             }
+        }
+    }
+
+    function showCompareContentButton() {
+        let button = document.createElement('span'),
+            buttonText = document.createTextNode('Show \'Compare Content\'');
+        button.appendChild(buttonText);
+        button.id = 'show-compare-content-button';
+        button.classList.add('aui-button');
+        button.classList.add('aui-button-secondary');
+
+        button.onclick = function () {
+            let element = document.getElementById('compare-content');
+            if (button.innerText == 'Hide \'Compare Content\'') {
+                button.innerText = ('Show \'Compare Content\'');
+            } else {
+                button.innerText = ('Hide \'Compare Content\'');
+            }
+
+            element.classList.toggle('show');
+        }
+
+        let prDetails = document.getElementsByClassName('pr-details');
+        if (typeof prDetails[0] !== 'undefined') {
+            prDetails[0].insertAdjacentElement('afterend', button);
         }
     }
 

@@ -126,3 +126,13 @@ li.detail-summary--item,
     position: relative;
 }
 /* End comment checkbox markup */
+
+#compare-content {
+    display: none;
+}
+#compare-content.show {
+    display: inherit;
+}
+#show-compare-content-button {
+    float: right;
+}

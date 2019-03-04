@@ -13,6 +13,7 @@ I spend a lot of time reviewing pull requests on Bitbucket, and in my opinion bo
 - Adds the 'watch pull request' and commit status links to the top header
 - Stickies the currently viewed file header to the top of the page
 - Adds a show/hide comments button to each file header
+- Hides the code changes on the 'open pull request' page by default, to prevent it taking ages when switching between branches.
 
 ### Issues/Things to note:
 - In order to display nicely, the left hand sidebar needs to be be minimised (unless you have a very wide monitor)
