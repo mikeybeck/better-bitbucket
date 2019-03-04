@@ -19,7 +19,7 @@ window.onload = function () {
                 highlightFileNames();
                 addCommentCheckboxes();
 
-                showCompareContentButton();
+                compareContentButton();
 
                 // Those pesky +'s & -'s reappear if you remove them too early, so wait a few seconds.
                 setTimeout(function () {
@@ -109,7 +109,11 @@ window.onload = function () {
         }
     }
 
-    function showCompareContentButton() {
+    function compareContentButton() {
+        if (window.location.pathname.slice(-18) !== '/pull-requests/new') {
+            return;
+        }
+
         let button = document.createElement('span'),
             buttonText = document.createTextNode('Show \'Compare Content\'');
         button.appendChild(buttonText);
