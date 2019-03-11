@@ -75,6 +75,11 @@ li.detail-summary--item,
     background-color: #fefefe;
 }
 
+#commit-files-summary-sidebar .commit-files-summary--filename {
+    float: right;
+    width: 100%;
+}
+
 /* Comment checkbox markup */
 .commentChecker.toggle-check-input:after {
     content: 'Hide comments';
