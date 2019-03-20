@@ -45,7 +45,7 @@ li.detail-summary--item,
     top: 35px;
     background: #DFE1E6;
     width: calc(30% - 70px);
-    height: 100%;
+    height: calc(100% - 40px);
 }
 
 #commit-files-summary-sidebar .count-badge {
